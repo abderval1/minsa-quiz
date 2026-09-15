@@ -3,23 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz MINSA - 50 Perguntas</title>
+    <title>Quiz MINSA - Simulador de Exames</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1>Quiz MINSA 2026</h1>
-            <p>Simulado Completo - 50 Perguntas</p>
+            <h1>Simulador MINSA 2026</h1>
+            <p id="header-desc">Escolha a sua categoria de exame</p>
+            <button id="back-home-btn" class="btn secondary" style="display: none; margin-top: 10px;">Voltar ao Menu</button>
         </header>
 
         <main id="quiz-container">
-            <div id="question-screen" class="screen active">
+            <!-- Home / Menu Screen -->
+            <div id="home-screen" class="screen active">
+                <h2>Selecione o Módulo de Estudo</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;">
+                    Perguntas baseadas nos tópicos oficiais do concurso e exames anteriores.
+                </p>
+                <div class="module-grid">
+                    <button class="btn module-btn" data-module="geral">
+                        <span class="icon">🏢</span> Técnicos Superior do Regime Geral
+                    </button>
+                    <button class="btn module-btn" data-module="diagnostico">
+                        <span class="icon">🔬</span> Téc. Diagnóstico e Terapêutica Superior
+                    </button>
+                    <button class="btn module-btn" data-module="sociais">
+                        <span class="icon">🤝</span> Assistentes Sociais
+                    </button>
+                    <button class="btn module-btn" data-module="condutor">
+                        <span class="icon">🚑</span> Condutor de Ambulância
+                    </button>
+                    <button class="btn module-btn" data-module="misto" style="background-color: #10b981; color: white;">
+                        <span class="icon">s🔀</span> Simulado Misto (Todos os Tópicos)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="question-screen" class="screen">
                 <div class="progress-bar">
                     <div id="progress-fill"></div>
                 </div>
-                <p id="question-tracker">Pergunta 1 de 50</p>
+                <p id="question-tracker">Pergunta 1</p>
                 <h2 id="question-text">Texto da Pergunta</h2>
                 <p id="question-hint" class="hint"></p>
                 
@@ -28,6 +55,7 @@
                 <button id="next-btn" class="btn primary" disabled>Avançar</button>
             </div>
 
+            <!-- Result Screen -->
             <div id="result-screen" class="screen">
                 <h2>Resultado Final</h2>
                 <div class="score-card">
@@ -47,15 +75,15 @@
                     </div>
                 </div>
                 <p id="result-message"></p>
-                <button id="retry-btn" class="btn primary">Repetir o Teste</button>
+                <button id="retry-btn" class="btn primary">Repetir este Módulo</button>
             </div>
         </main>
 
         <footer>
-            <p>Preparação para Concurso MINSA. 50 Questões.</p>
+            <p>Preparação para Concurso MINSA. Múltiplos Módulos.</p>
         </footer>
     </div>
-    <script src="questions.js"></script>
+    <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
