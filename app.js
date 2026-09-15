@@ -5,6 +5,7 @@ let userSelections = new Set();
 let correctCount = 0;
 let incorrectCount = 0;
 let hasAnswered = false;
+let selectedDifficulty = 'normal'; // default
 
 // DOM Elements
 const screenHome = document.getElementById('home-screen');
@@ -15,6 +16,7 @@ const headerDesc = document.getElementById('header-desc');
 
 const progressFill = document.getElementById('progress-fill');
 const questionTracker = document.getElementById('question-tracker');
+const difficultyBadge = document.getElementById('difficulty-badge');
 const questionText = document.getElementById('question-text');
 const questionHint = document.getElementById('question-hint');
 const optionsContainer = document.getElementById('options-container');
@@ -25,6 +27,15 @@ const correctCountEl = document.getElementById('correct-count');
 const incorrectCountEl = document.getElementById('incorrect-count');
 const resultMessageEl = document.getElementById('result-message');
 const retryBtn = document.getElementById('retry-btn');
+
+// Difficulty Selection
+document.querySelectorAll('.btn-diff').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.btn-diff').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        selectedDifficulty = e.target.dataset.diff;
+    });
+});
 
 // Module Selection
 document.querySelectorAll('.module-btn').forEach(btn => {
@@ -37,7 +48,6 @@ document.querySelectorAll('.module-btn').forEach(btn => {
 
 backHomeBtn.addEventListener('click', goHome);
 retryBtn.addEventListener('click', () => {
-    // Restart current module
     currentQuestionIndex = 0;
     correctCount = 0;
     incorrectCount = 0;
@@ -55,22 +65,31 @@ function goHome() {
 }
 
 function startModule(moduleId, moduleName) {
+    let pool = [];
+    
     if (moduleId === 'misto') {
-        // Combine all arrays and shuffle, take 50
-        let all = [];
         for (let key in modulesData) {
-            all = all.concat(modulesData[key]);
+            pool = pool.concat(modulesData[key]);
         }
-        all.sort(() => Math.random() - 0.5);
-        activeQuestions = all.slice(0, 50); // limit to 50
     } else {
-        activeQuestions = modulesData[moduleId] || [];
-        // Optional: shuffle questions
-        activeQuestions.sort(() => Math.random() - 0.5);
+        pool = modulesData[moduleId] || [];
     }
     
+    // Filtra pela dificuldade selecionada
+    activeQuestions = pool.filter(q => q.difficulty === selectedDifficulty);
+    
+    // Se não houver perguntas suficientes dessa dificuldade, pega de outras para não ficar vazio, mas prioriza a dificuldade
+    if (activeQuestions.length < 10) {
+        const otherQuestions = pool.filter(q => q.difficulty !== selectedDifficulty);
+        activeQuestions = activeQuestions.concat(otherQuestions).slice(0, 50);
+    }
+    
+    // Embaralha e corta para o máximo de 50
+    activeQuestions.sort(() => Math.random() - 0.5);
+    activeQuestions = activeQuestions.slice(0, 50);
+
     if (activeQuestions.length === 0) {
-        alert("Em construção!");
+        alert("Nenhuma pergunta encontrada para este módulo.");
         return;
     }
 
@@ -83,7 +102,12 @@ function startModule(moduleId, moduleName) {
     screenQuestion.classList.add('active');
     
     backHomeBtn.style.display = 'inline-block';
+    
+    // Formata badge e header
+    let diffName = selectedDifficulty === 'facil' ? 'Fácil' : (selectedDifficulty === 'normal' ? 'Normal' : 'Difícil');
     headerDesc.innerText = "Módulo: " + moduleName;
+    difficultyBadge.innerText = diffName;
+    difficultyBadge.className = "badge " + selectedDifficulty;
     
     loadQuestion();
 }
@@ -104,7 +128,6 @@ function loadQuestion() {
         
     optionsContainer.innerHTML = '';
     
-    // Randomize options
     const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
     
     shuffledOptions.forEach(opt => {
@@ -205,13 +228,13 @@ function showResults() {
     incorrectCountEl.innerText = incorrectCount;
     
     if (percentage >= 90) {
-        resultMessageEl.innerText = "Excelente! Estás muito bem preparado.";
+        resultMessageEl.innerText = "Excelente! Estás muito bem preparado para este nível.";
         resultMessageEl.style.color = "var(--correct-text)";
     } else if (percentage >= 60) {
-        resultMessageEl.innerText = "Bom trabalho! Mas ainda podes melhorar em alguns tópicos específicos.";
+        resultMessageEl.innerText = "Bom trabalho! Mas continua a estudar para garantir a vaga.";
         resultMessageEl.style.color = "#b45309";
     } else {
-        resultMessageEl.innerText = "Atenção: Precisas de estudar mais os exames anteriores e os tópicos base.";
+        resultMessageEl.innerText = "Atenção: A tua nota foi baixa. Recomendamos que tentes o nível Fácil primeiro e estudes a matéria.";
         resultMessageEl.style.color = "var(--incorrect-text)";
     }
 }

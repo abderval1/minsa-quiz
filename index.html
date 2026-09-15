@@ -18,26 +18,38 @@
         <main id="quiz-container">
             <!-- Home / Menu Screen -->
             <div id="home-screen" class="screen active">
-                <h2>Selecione o Módulo de Estudo</h2>
-                <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;">
-                    Perguntas baseadas nos tópicos oficiais do concurso e exames anteriores.
-                </p>
-                <div class="module-grid">
-                    <button class="btn module-btn" data-module="geral">
-                        <span class="icon">🏢</span> Técnicos Superior do Regime Geral
-                    </button>
-                    <button class="btn module-btn" data-module="diagnostico">
-                        <span class="icon">🔬</span> Téc. Diagnóstico e Terapêutica Superior
-                    </button>
-                    <button class="btn module-btn" data-module="sociais">
-                        <span class="icon">🤝</span> Assistentes Sociais
-                    </button>
-                    <button class="btn module-btn" data-module="condutor">
-                        <span class="icon">🚑</span> Condutor de Ambulância
-                    </button>
-                    <button class="btn module-btn" data-module="misto" style="background-color: #10b981; color: white;">
-                        <span class="icon">s🔀</span> Simulado Misto (Todos os Tópicos)
-                    </button>
+                
+                <div class="difficulty-section">
+                    <h3>1. Selecione a Dificuldade</h3>
+                    <div class="diff-buttons">
+                        <button class="btn-diff" data-diff="facil">Fácil</button>
+                        <button class="btn-diff active" data-diff="normal">Normal</button>
+                        <button class="btn-diff" data-diff="dificil">Difícil</button>
+                    </div>
+                </div>
+
+                <div class="module-section">
+                    <h3>2. Selecione o Módulo de Estudo</h3>
+                    <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;">
+                        Perguntas baseadas nos tópicos oficiais do concurso e exames anteriores.
+                    </p>
+                    <div class="module-grid">
+                        <button class="btn module-btn" data-module="geral">
+                            <span class="icon">🏢</span> Técnicos Superior do Regime Geral
+                        </button>
+                        <button class="btn module-btn" data-module="diagnostico">
+                            <span class="icon">🔬</span> Téc. Diagnóstico e Terapêutica Superior
+                        </button>
+                        <button class="btn module-btn" data-module="sociais">
+                            <span class="icon">🤝</span> Assistentes Sociais
+                        </button>
+                        <button class="btn module-btn" data-module="condutor">
+                            <span class="icon">🚑</span> Condutor de Ambulância
+                        </button>
+                        <button class="btn module-btn" data-module="misto" style="background-color: #10b981; color: white;">
+                            <span class="icon">🔀</span> Simulado Misto (Todos os Tópicos)
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -46,7 +58,10 @@
                 <div class="progress-bar">
                     <div id="progress-fill"></div>
                 </div>
-                <p id="question-tracker">Pergunta 1</p>
+                <div class="question-header-info">
+                    <p id="question-tracker">Pergunta 1</p>
+                    <span id="difficulty-badge" class="badge">Normal</span>
+                </div>
                 <h2 id="question-text">Texto da Pergunta</h2>
                 <p id="question-hint" class="hint"></p>
                 
@@ -80,7 +95,7 @@
         </main>
 
         <footer>
-            <p>Preparação para Concurso MINSA. Múltiplos Módulos.</p>
+            <p>Preparação para Concurso MINSA. Múltiplos Módulos e Dificuldades.</p>
         </footer>
     </div>
     <script src="data.js"></script>
