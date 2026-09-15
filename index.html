@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz MINSA - 50 Perguntas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Quiz MINSA 2026</h1>
+            <p>Simulado Completo - 50 Perguntas</p>
+        </header>
+
+        <main id="quiz-container">
+            <div id="question-screen" class="screen active">
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+                <p id="question-tracker">Pergunta 1 de 50</p>
+                <h2 id="question-text">Texto da Pergunta</h2>
+                <p id="question-hint" class="hint"></p>
+                
+                <div id="options-container" class="options-container"></div>
+
+                <button id="next-btn" class="btn primary" disabled>Avançar</button>
+            </div>
+
+            <div id="result-screen" class="screen">
+                <h2>Resultado Final</h2>
+                <div class="score-card">
+                    <div class="score-item">
+                        <span class="score-label">Pontuação</span>
+                        <span id="final-score" class="score-value highlight">0%</span>
+                    </div>
+                    <div class="score-details">
+                        <div class="detail-item correct">
+                            <span class="icon">✓</span>
+                            <span>Acertos: <strong id="correct-count">0</strong></span>
+                        </div>
+                        <div class="detail-item incorrect">
+                            <span class="icon">✗</span>
+                            <span>Erros: <strong id="incorrect-count">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <p id="result-message"></p>
+                <button id="retry-btn" class="btn primary">Repetir o Teste</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Preparação para Concurso MINSA. 50 Questões.</p>
+        </footer>
+    </div>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
