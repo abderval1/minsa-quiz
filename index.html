@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz MINSA - Simulador de Exames</title>
+    <title>Quiz MINSA - Terapêutica Superior</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1>Simulador MINSA 2026</h1>
-            <p id="header-desc">Escolha a sua categoria de exame</p>
+            <h1>MINSA - Terapêutica Superior</h1>
+            <p id="header-desc">Simulador focado na Terça-Feira</p>
             <button id="back-home-btn" class="btn secondary" style="display: none; margin-top: 10px;">Voltar ao Menu</button>
         </header>
 
@@ -29,27 +29,38 @@
                 </div>
 
                 <div class="module-section">
-                    <h3>2. Selecione o Módulo de Estudo</h3>
+                    <h3>2. Especialidades (Diagnóstico e Terapêutica)</h3>
                     <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;">
-                        Perguntas baseadas nos tópicos oficiais do concurso e exames anteriores.
+                        50 perguntas por módulo, ajustadas ao nível escolhido.
                     </p>
                     <div class="module-grid">
-                        <button class="btn module-btn" data-module="geral">
-                            <span class="icon">🏢</span> Técnicos Superior do Regime Geral
+                        <button class="btn module-btn" data-module="analises">
+                            <span class="icon">🔬</span> Análises Clínicas e Microbiologia
                         </button>
-                        <button class="btn module-btn" data-module="diagnostico">
-                            <span class="icon">🔬</span> Téc. Diagnóstico e Terapêutica Superior
+                        <button class="btn module-btn" data-module="farmacia">
+                            <span class="icon">💊</span> Farmácia e Farmacologia
                         </button>
-                        <button class="btn module-btn" data-module="sociais">
-                            <span class="icon">🤝</span> Assistentes Sociais
+                        <button class="btn module-btn" data-module="radiologia">
+                            <span class="icon">☢️</span> Radiologia e Imagiologia
                         </button>
-                        <button class="btn module-btn" data-module="condutor">
-                            <span class="icon">🚑</span> Condutor de Ambulância
+                        <button class="btn module-btn" data-module="fisioterapia">
+                            <span class="icon">🦴</span> Fisioterapia e Reabilitação
+                        </button>
+                        <button class="btn module-btn" data-module="gerais">
+                            <span class="icon">🌍</span> Conhecimentos Gerais (Obrigatório)
                         </button>
                         <button class="btn module-btn" data-module="misto" style="background-color: #10b981; color: white;">
-                            <span class="icon">🔀</span> Simulado Misto (Todos os Tópicos)
+                            <span class="icon">🔀</span> Simulado Geral (Misto)
                         </button>
                     </div>
+                </div>
+
+                <div class="pdf-section" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <h3>📚 Material de Estudo e Provas Passadas</h3>
+                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Aceda aos PDFs das provas de anos anteriores e simulados impressos.</p>
+                    <a href="provas_antigas.html" target="_blank" class="btn" style="background-color: #f59e0b; color: white; display: inline-block; text-align: center; text-decoration: none;">
+                        <span class="icon">📄</span> Ver Provas Passadas em PDF
+                    </a>
                 </div>
             </div>
 
@@ -93,10 +104,6 @@
                 <button id="retry-btn" class="btn primary">Repetir este Módulo</button>
             </div>
         </main>
-
-        <footer>
-            <p>Preparação para Concurso MINSA. Múltiplos Módulos e Dificuldades.</p>
-        </footer>
     </div>
     <script src="data.js"></script>
     <script src="app.js"></script>

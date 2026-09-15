@@ -1,92 +1,82 @@
-// As perguntas são geradas de acordo com as dificuldades:
-// 'facil' -> Conceitos diretos e definições básicas
-// 'normal' -> Aplicações dos conceitos, procedimentos padrão
-// 'dificil' -> Questões técnicas com rasteiras (ex: excepções), dados específicos (ex: TMI, IA, Microbiologia detalhada)
+// BANCO DE DADOS EXCLUSIVO PARA TÉC. DIAGNÓSTICO E TERAPÊUTICA
 
 const qGerais = [
     // FÁCIL
-    { id: 1, difficulty: 'facil', text: 'Segundo a Pauta Deontológica, o funcionário público deve agir com:', type: 'single', options: [{ id: 'a', text: 'Imparcialidade e Isenção' }, { id: 'b', text: 'Interesse pessoal' }, { id: 'c', text: 'Desrespeito' }, { id: 'd', text: 'Prepotência' }], correctAnswers: ['a'] },
-    { id: 2, difficulty: 'facil', text: 'O que avalia principalmente o Censo 2024?', type: 'single', options: [{ id: 'a', text: 'Eleições' }, { id: 'b', text: 'A população e habitação de Angola' }, { id: 'c', text: 'O preço do petróleo' }, { id: 'd', text: 'O clima' }], correctAnswers: ['b'] },
-    { id: 3, difficulty: 'facil', text: 'A Inteligência Artificial na saúde serve para:', type: 'single', options: [{ id: 'a', text: 'Substituir todos os enfermeiros' }, { id: 'b', text: 'Apoiar os médicos no diagnóstico e analisar dados' }, { id: 'c', text: 'Proibir consultas presenciais' }, { id: 'd', text: 'Causar doenças' }], correctAnswers: ['b'] },
-    { id: 4, difficulty: 'facil', text: 'Qual o objetivo principal da Divisão Político-Administrativa de 2024?', type: 'single', options: [{ id: 'a', text: 'Aproximar o Estado da População' }, { id: 'b', text: 'Fechar estradas' }, { id: 'c', text: 'Aumentar a distância até aos hospitais' }, { id: 'd', text: 'Eliminar províncias' }], correctAnswers: ['a'] },
-    { id: 5, difficulty: 'facil', text: 'O sigilo profissional obriga o técnico de saúde a:', type: 'single', options: [{ id: 'a', text: 'Falar dos pacientes com amigos' }, { id: 'b', text: 'Proteger a privacidade e os dados médicos dos doentes' }, { id: 'c', text: 'Esconder o seu próprio nome' }, { id: 'd', text: 'Publicar os casos no Facebook' }], correctAnswers: ['b'] },
+    { id: 1, difficulty: 'facil', text: 'Segundo a Pauta Deontológica, o funcionário público deve agir com:', type: 'single', options: [{ id: 'a', text: 'Imparcialidade e Isenção' }, { id: 'b', text: 'Interesse pessoal' }, { id: 'c', text: 'Autoritarismo' }], correctAnswers: ['a'] },
+    { id: 2, difficulty: 'facil', text: 'O que avalia principalmente o Censo 2024?', type: 'single', options: [{ id: 'a', text: 'A população e a habitação de Angola' }, { id: 'b', text: 'Apenas os hospitais' }, { id: 'c', text: 'O clima e a agricultura' }], correctAnswers: ['a'] },
+    // NORMAL
+    { id: 3, difficulty: 'normal', text: 'No âmbito do IIMS, a avaliação da Mortalidade Materno-Infantil visa:', type: 'single', options: [{ id: 'a', text: 'Medir a eficácia dos cuidados de saúde' }, { id: 'b', text: 'Definir orçamentos militares' }, { id: 'c', text: 'Aprovar impostos' }], correctAnswers: ['a'] },
+    { id: 4, difficulty: 'normal', text: 'O princípio da Beneficência em bioética exige que o profissional:', type: 'single', options: [{ id: 'a', text: 'Aja de forma a maximizar o bem-estar do doente' }, { id: 'b', text: 'Cobre por consultas no sistema público' }, { id: 'c', text: 'Evite tratar casos complexos' }], correctAnswers: ['a'] },
+    // DIFÍCIL
+    { id: 5, difficulty: 'dificil', text: 'O "Viés Algorítmico" (Algorithmic Bias) na IA na saúde pública significa:', type: 'single', options: [{ id: 'a', text: 'Modelos que reproduzem ou ampliam desigualdades sociais/raciais' }, { id: 'b', text: 'Vírus de computador' }, { id: 'c', text: 'Lentidão no processamento de imagens DICOM' }], correctAnswers: ['a'] }
+];
+
+const qAnalises = [
+    // FÁCIL
+    { id: 101, difficulty: 'facil', text: 'Os glóbulos vermelhos (eritrócitos) têm a função principal de:', type: 'single', options: [{ id: 'a', text: 'Transportar oxigénio' }, { id: 'b', text: 'Combater vírus' }, { id: 'c', text: 'Coagular o sangue' }], correctAnswers: ['a'] },
+    { id: 102, difficulty: 'facil', text: 'A técnica de Autoclave utiliza:', type: 'single', options: [{ id: 'a', text: 'Calor húmido e pressão' }, { id: 'b', text: 'Radiação' }, { id: 'c', text: 'Álcool 70%' }], correctAnswers: ['a'] },
+    // NORMAL
+    { id: 103, difficulty: 'normal', text: 'A coloração de Ziehl-Neelsen serve especificamente para identificar:', type: 'single', options: [{ id: 'a', text: 'Micobactérias (B.A.A.R.)' }, { id: 'b', text: 'Bactérias Gram-negativas' }, { id: 'c', text: 'Esporos de fungos' }], correctAnswers: ['a'] },
+    { id: 104, difficulty: 'normal', text: 'No Plaquetograma, o Índice de Volume Plaquetário Médio (VPM) aumentado indica:', type: 'single', options: [{ id: 'a', text: 'Destruição plaquetária periférica e medula hiperativa' }, { id: 'b', text: 'Falta de ferro' }, { id: 'c', text: 'Excesso de água no plasma' }], correctAnswers: ['a'] },
+    // DIFÍCIL
+    { id: 105, difficulty: 'dificil', text: 'Na identificação de Enterobactérias, o meio de cultura Ágar MacConkey é:', type: 'single', options: [{ id: 'a', text: 'Seletivo (sais biliares) e Diferencial (fermentação da lactose)' }, { id: 'b', text: 'Apenas nutritivo' }, { id: 'c', text: 'Usado para cultivar vírus' }], correctAnswers: ['a'] }
+];
+
+const qFarmacia = [
+    { id: 201, difficulty: 'facil', text: 'Qual das seguintes é uma via de administração enteral?', type: 'single', options: [{ id: 'a', text: 'Via oral' }, { id: 'b', text: 'Via intravenosa' }, { id: 'c', text: 'Via intramuscular' }], correctAnswers: ['a'] },
+    { id: 202, difficulty: 'normal', text: 'A Farmacocinética estuda os processos de:', type: 'single', options: [{ id: 'a', text: 'Absorção, Distribuição, Biotransformação e Excreção' }, { id: 'b', text: 'Ação e efeito (Relação dose-efeito)' }, { id: 'c', text: 'Marketing de medicamentos' }], correctAnswers: ['a'] },
+    { id: 203, difficulty: 'dificil', text: 'Na Gestão de Stocks Hospitalares, a Classificação ABC baseia-se em:', type: 'single', options: [{ id: 'a', text: 'Valor de consumo anual dos medicamentos (Redução de custos)' }, { id: 'b', text: 'Ordem alfabética das caixas' }, { id: 'c', text: 'Data de validade apenas' }], correctAnswers: ['a'] }
+];
+
+const qRadiologia = [
+    { id: 301, difficulty: 'facil', text: 'A radiação X é uma forma de radiação:', type: 'single', options: [{ id: 'a', text: 'Ionizante' }, { id: 'b', text: 'Não ionizante' }, { id: 'c', text: 'Sonora' }], correctAnswers: ['a'] },
+    { id: 302, difficulty: 'normal', text: 'Em proteção radiológica, os pilares fundamentais são:', type: 'single', options: [{ id: 'a', text: 'Tempo, Distância e Blindagem' }, { id: 'b', text: 'Água, Luz e Calor' }, { id: 'c', text: 'Velocidade, Peso e Altura' }], correctAnswers: ['a'] },
+    { id: 303, difficulty: 'dificil', text: 'Um meio de contraste radiológico opaco comum para o trato gastrointestinal é baseado em:', type: 'single', options: [{ id: 'a', text: 'Sulfato de Bário' }, { id: 'b', text: 'Glicose salina' }, { id: 'c', text: 'Nitrogénio líquido' }], correctAnswers: ['a'] }
+];
+
+const qFisioterapia = [
+    { id: 401, difficulty: 'facil', text: 'Num paciente acamado, a mobilização precoce serve para prevenir:', type: 'single', options: [{ id: 'a', text: 'Úlceras de pressão e atrofia muscular' }, { id: 'b', text: 'Cegueira' }, { id: 'c', text: 'Queda de cabelo' }], correctAnswers: ['a'] },
+    { id: 402, difficulty: 'normal', text: 'Na fase de protetização de uma amputação transtibial, o que deve ser evitado?', type: 'single', options: [{ id: 'a', text: 'Pressão excessiva sobre proeminências ósseas' }, { id: 'b', text: 'O enfaixamento do coto' }, { id: 'c', text: 'A marcha precoce com apoio' }], correctAnswers: ['a'] },
+    { id: 403, difficulty: 'dificil', text: 'A Doença Pulmonar Obstrutiva Crónica (DPOC) em fisioterapia respiratória apresenta na Espirometria:', type: 'single', options: [{ id: 'a', text: 'Relação VEF1/CVF inferior a 70% após broncodilatador' }, { id: 'b', text: 'Aumento da Capacidade Vital Forçada' }, { id: 'c', text: 'Diminuição do Volume Residual' }], correctAnswers: ['a'] }
+];
+
+// Generates 50 questions exactly per requested difficulty
+function buildCategory(specifics, maxNeeded, requestedDiff) {
+    let rawPool = [...specifics, ...qGerais].filter(q => q.difficulty === requestedDiff);
+    let pool = [];
+    let counter = 1;
     
-    // NORMAL
-    { id: 6, difficulty: 'normal', text: 'No âmbito do IIMS, a avaliação da Mortalidade Materno-Infantil visa:', type: 'single', options: [{ id: 'a', text: 'Aumentar as taxas hospitalares' }, { id: 'b', text: 'Medir a eficácia dos cuidados de saúde prestados a grávidas e recém-nascidos' }, { id: 'c', text: 'Definir salários médicos' }, { id: 'd', text: 'Aprovar leis eleitorais' }], correctAnswers: ['b'] },
-    { id: 7, difficulty: 'normal', text: 'O princípio da Beneficência em bioética exige que o profissional:', type: 'single', options: [{ id: 'a', text: 'Não cause mal ao paciente intencionalmente' }, { id: 'b', text: 'Aja de forma a maximizar o bem-estar e a saúde do doente' }, { id: 'c', text: 'Dê alta precoce ao doente' }, { id: 'd', text: 'Cobrar diretamente ao utente pelo serviço' }], correctAnswers: ['b'] },
-    { id: 8, difficulty: 'normal', text: 'Como a descentralização (Nova Divisão Administrativa) beneficia as campanhas de vacinação?', type: 'multiple', options: [{ id: 'a', text: 'Melhorando a gestão logística local (municípios)' }, { id: 'b', text: 'Identificando focos populacionais mais rápido' }, { id: 'c', text: 'Centralizando as vacinas todas num único armazém em Luanda' }, { id: 'd', text: 'Dificultando o acesso das zonas rurais' }], correctAnswers: ['a', 'b'] },
-    { id: 9, difficulty: 'normal', text: 'Os dados do Censo sobre saneamento básico e acesso à água permitem ao MINSA:', type: 'single', options: [{ id: 'a', text: 'Vender medicamentos' }, { id: 'b', text: 'Mapear áreas de risco para surtos de doenças de transmissão hídrica (ex: Cólera)' }, { id: 'c', text: 'Controlar o trânsito' }, { id: 'd', text: 'Determinar taxas de natalidade' }], correctAnswers: ['b'] },
-    { id: 10, difficulty: 'normal', text: 'No contexto do IIMS, o que são indicadores antropométricos infantis?', type: 'single', options: [{ id: 'a', text: 'Medições do crânio dos pais' }, { id: 'b', text: 'Avaliação de peso, altura e perímetro braquial para detectar desnutrição' }, { id: 'c', text: 'Exames de sangue complexos' }, { id: 'd', text: 'Questionários psicológicos' }], correctAnswers: ['b'] },
-
-    // DIFÍCIL
-    { id: 11, difficulty: 'dificil', text: 'Relativamente ao dever de Probidade Administrativa estatuído em Angola, é correto afirmar:', type: 'single', options: [{ id: 'a', text: 'É lícito receber pequenas gratificações se não comprometer a decisão técnica.' }, { id: 'b', text: 'O funcionário público não pode solicitar ou aceitar, para si ou para terceiros, vantagens pecuniárias como recompensa das suas funções.' }, { id: 'c', text: 'Aplica-se exclusivamente aos diretores de hospitais e administradores.' }, { id: 'd', text: 'Permite o uso de bens públicos para fins privados desde que fora do horário de expediente.' }], correctAnswers: ['b'] },
-    { id: 12, text: 'No campo do "Big Data" associado à IA na saúde pública, o desafio do "Viés Algorítmico" (Algorithmic Bias) significa:', difficulty: 'dificil', type: 'single', options: [{ id: 'a', text: 'Que os computadores ficam lentos com muitos dados.' }, { id: 'b', text: 'Que os modelos podem reproduzir ou ampliar desigualdades raciais/sociais se treinados com bases de dados desequilibradas.' }, { id: 'c', text: 'O roubo de dados por hackers.' }, { id: 'd', text: 'A incapacidade de armazenar imagens DICOM de alta resolução.' }], correctAnswers: ['b'] },
-    { id: 13, text: 'O IIMS utiliza metodologias de amostragem por agregados familiares. Um viés potencial deste inquérito para a saúde reprodutiva é:', difficulty: 'dificil', type: 'multiple', options: [{ id: 'a', text: 'A sub-representação de populações nómadas ou rurais remotas.' }, { id: 'b', text: 'O excesso de recolhas exatas de laboratório em casa.' }, { id: 'c', text: 'Viés de memória e subnotificação em temas sensíveis (ex: VIH, métodos contracetivos).' }, { id: 'd', text: 'Substituição completa do registo civil.' }], correctAnswers: ['a', 'c'] },
-    { id: 14, text: 'De acordo com as leis orgânicas e Pauta Deontológica, a "Responsabilidade Solidária" na equipa multidisciplinar implica:', difficulty: 'dificil', type: 'single', options: [{ id: 'a', text: 'Que o erro médico de um colega deve ser ativamente ocultado para proteger a classe.' }, { id: 'b', text: 'Que os profissionais partilham a obrigação ética de zelar pela correção técnica e denunciar práticas lesivas ao paciente.' }, { id: 'c', text: 'Que todos recebem o mesmo salário.' }, { id: 'd', text: 'Que a culpa é sempre exclusiva do Diretor Clínico.' }], correctAnswers: ['b'] },
-    { id: 15, text: 'A divisão política de Angola em mais províncias e municípios (2024) gera o conceito de "Desconcentração e Descentralização Sanitária". Qual a diferença prática?', difficulty: 'dificil', type: 'single', options: [{ id: 'a', text: 'São exatamente a mesma coisa, alterando apenas a nomenclatura fiscal.' }, { id: 'b', text: 'Desconcentração transfere apenas a execução (mantendo hierarquia central), enquanto Descentralização cria entidades locais com autonomia administrativa e financeira.' }, { id: 'c', text: 'Descentralização significa enviar médicos do litoral para o leste do país apenas.' }, { id: 'd', text: 'Nenhuma delas é aplicável ao Ministério da Saúde.' }], correctAnswers: ['b'] }
-];
-
-const qDiagnostico = [
-    // FÁCIL
-    { id: 101, difficulty: 'facil', text: 'No sangue, os glóbulos vermelhos (eritrócitos) transportam:', type: 'single', options: [{ id: 'a', text: 'Glicose e gordura' }, { id: 'b', text: 'Oxigénio e Dióxido de Carbono' }, { id: 'c', text: 'Apenas Água' }, { id: 'd', text: 'Anticorpos' }], correctAnswers: ['b'] },
-    { id: 102, difficulty: 'facil', text: 'A principal função da máquina de Autoclave no laboratório é:', type: 'single', options: [{ id: 'a', text: 'Lavar tubos de ensaio' }, { id: 'b', text: 'Congelar amostras de sangue' }, { id: 'c', text: 'Esterilizar materiais usando calor húmido e pressão' }, { id: 'd', text: 'Centrifugar plasma' }], correctAnswers: ['c'] },
-    // NORMAL
-    { id: 103, difficulty: 'normal', text: 'Na avaliação de fezes (Coproparasitologia), a pesquisa de ovos de Ascaris lumbricoides é feita através do método de:', type: 'single', options: [{ id: 'a', text: 'Ziehl-Neelsen' }, { id: 'b', text: 'Kato-Katz ou flutuação' }, { id: 'c', text: 'Eletroforese' }, { id: 'd', text: 'Teste de Coomb' }], correctAnswers: ['b'] },
-    { id: 104, difficulty: 'normal', text: 'A hemoglobina glicada (HbA1c) é um marcador fundamental para o controlo a longo prazo de:', type: 'single', options: [{ id: 'a', text: 'Anemia ferropénica' }, { id: 'b', text: 'Tuberculose' }, { id: 'c', text: 'Insuficiência renal' }, { id: 'd', text: 'Diabetes Mellitus' }], correctAnswers: ['d'] },
-    // DIFÍCIL
-    { id: 105, difficulty: 'dificil', text: 'Na identificação laboratorial de bactérias, a prova de "Coagulase Livre" positiva é o padrão-ouro definitivo para confirmar:', type: 'single', options: [{ id: 'a', text: 'Streptococcus pneumoniae' }, { id: 'b', text: 'Staphylococcus aureus' }, { id: 'c', text: 'Staphylococcus epidermidis' }, { id: 'd', text: 'Enterococcus faecalis' }], correctAnswers: ['b'] },
-    { id: 106, difficulty: 'dificil', text: 'No Plaquetograma, o Índice de Volume Plaquetário Médio (VPM) aumentado, acompanhado de trombocitopenia, sugere clinicamente:', type: 'multiple', options: [{ id: 'a', text: 'Destruição plaquetária periférica (ex: Púrpura Trombocitopénica Imune)' }, { id: 'b', text: 'Aplasia Medular Severa' }, { id: 'c', text: 'Consumo acelerado com medula hiperativa a produzir macroplaquetas novas' }, { id: 'd', text: 'Deficiência grave de Vitamina B12 pura' }], correctAnswers: ['a', 'c'] }
-];
-
-const qSociais = [
-    // FÁCIL
-    { id: 201, difficulty: 'facil', text: 'Qual o papel de um Assistente Social num hospital?', type: 'single', options: [{ id: 'a', text: 'Fazer curativos nos doentes' }, { id: 'b', text: 'Dar apoio social, emocional e encaminhar a família do doente para apoios estatais' }, { id: 'c', text: 'Receitar antibióticos' }, { id: 'd', text: 'Conduzir ambulâncias' }], correctAnswers: ['b'] },
-    { id: 202, difficulty: 'facil', text: 'A empatia no atendimento significa:', type: 'single', options: [{ id: 'a', text: 'Ignorar o que o utente diz' }, { id: 'b', text: 'Ter pena do utente' }, { id: 'c', text: 'Colocar-se no lugar do utente e compreender a sua dor sem o julgar' }, { id: 'd', text: 'Falar muito alto' }], correctAnswers: ['c'] },
-    // NORMAL
-    { id: 203, difficulty: 'normal', text: 'A abordagem Biopsicossocial considera que a saúde do doente é influenciada por:', type: 'single', options: [{ id: 'a', text: 'Apenas por vírus e bactérias' }, { id: 'b', text: 'Exclusivamente por razões espirituais' }, { id: 'c', text: 'Fatores biológicos, psicológicos e determinantes socioeconómicos do seu meio' }, { id: 'd', text: 'Apenas pela sua dieta' }], correctAnswers: ['c'] },
-    { id: 204, difficulty: 'normal', text: 'O que é uma "Visita Domiciliária" no âmbito do Serviço Social na saúde?', type: 'single', options: [{ id: 'a', text: 'Uma consulta médica em casa' }, { id: 'b', text: 'Um instrumento para observar in loco as condições de vida e dinâmica familiar do paciente' }, { id: 'c', text: 'Uma entrega de presentes' }, { id: 'd', text: 'Uma intervenção policial' }], correctAnswers: ['b'] },
-    // DIFÍCIL
-    { id: 205, difficulty: 'dificil', text: 'Perante um conflito bioético (ex: recusa de transfusão sanguínea por crença religiosa de um paciente adulto e capaz), o Assistente Social deve:', type: 'single', options: [{ id: 'a', text: 'Coagir psicologicamente o utente recorrendo à família' }, { id: 'b', text: 'Respeitar o Princípio da Autonomia, oferecendo mediação inter-pares e alternativas com a equipa clínica' }, { id: 'c', text: 'Omitir a informação do médico' }, { id: 'd', text: 'Forçar o tratamento independentemente do consentimento' }], correctAnswers: ['b'] },
-    { id: 206, difficulty: 'dificil', text: 'No quadro das Perturbações do Humor (ex: Depressão Major), o foco da reabilitação psicossocial baseia-se em:', type: 'multiple', options: [{ id: 'a', text: 'Isolamento profilático prolongado do doente' }, { id: 'b', text: 'Reativação de redes de suporte informal (família/comunidade)' }, { id: 'c', text: 'Promoção de autonomia e treino de competências de vida diária' }, { id: 'd', text: 'Remoção total de responsabilidades para sempre' }], correctAnswers: ['b', 'c'] }
-];
-
-const qCondutor = [
-    // FÁCIL
-    { id: 301, difficulty: 'facil', text: 'Uma ambulância com a sirene e luzes ligadas tem:', type: 'single', options: [{ id: 'a', text: 'Prioridade de passagem' }, { id: 'b', text: 'De parar e ceder passagem aos carros normais' }, { id: 'c', text: 'De andar a 20 km/h' }, { id: 'd', text: 'De ignorar todos os doentes' }], correctAnswers: ['a'] },
-    { id: 302, difficulty: 'facil', text: 'O cinto de segurança numa ambulância:', type: 'single', options: [{ id: 'a', text: 'Só deve ser usado pelo doente' }, { id: 'b', text: 'É obrigatório para o condutor e todos os ocupantes em condições normais' }, { id: 'c', text: 'É proibido por lei' }, { id: 'd', text: 'É facultativo para o condutor' }], correctAnswers: ['b'] },
-    // NORMAL
-    { id: 303, difficulty: 'normal', text: 'Para evitar o sobreaquecimento do motor da ambulância, o condutor deve verificar regularmente:', type: 'single', options: [{ id: 'a', text: 'O líquido do para-brisas' }, { id: 'b', text: 'O nível do líquido de refrigeração e estado do radiador' }, { id: 'c', text: 'A pressão dos pneus' }, { id: 'd', text: 'Os espelhos retrovisores' }], correctAnswers: ['b'] },
-    { id: 304, difficulty: 'normal', text: 'No Suporte Básico de Vida, qual a sequência inicial (C-A-B) após detetar paragem cardiorrespiratória?', type: 'single', options: [{ id: 'a', text: 'Compressões torácicas, Abertura da via aérea, Boa ventilação' }, { id: 'b', text: 'Abertura aérea, Boa ventilação, Compressões' }, { id: 'c', text: 'Ventilação apenas' }, { id: 'd', text: 'Choque elétrico, Água, Compressões' }], correctAnswers: ['a'] },
-    // DIFÍCIL
-    { id: 305, difficulty: 'dificil', text: 'Durante o transporte de um doente com trauma vértebro-medular (lesão na coluna), a "condução defensiva extrema" exige:', type: 'single', options: [{ id: 'a', text: 'Desacelerações bruscas para testar imobilização' }, { id: 'b', text: 'Minimização rigorosa das forças de inércia longitudinal e lateral (aceleração/travagem suaves e curvas lentas)' }, { id: 'c', text: 'Transporte a alta velocidade constante sem travagens' }, { id: 'd', text: 'Apenas ligar a sirene sem alterar o estilo de condução' }], correctAnswers: ['b'] },
-    { id: 306, difficulty: 'dificil', text: 'Mecanicamente, o efeito de "Fading" (fadiga dos travões) que pode afetar uma ambulância pesada numa descida acentuada é causado por:', type: 'single', options: [{ id: 'a', text: 'Falta de combustível' }, { id: 'b', text: 'Sobreaquecimento das pastilhas/cintas de travão devido à fricção excessiva prolongada' }, { id: 'c', text: 'Congelamento do óleo dos travões' }, { id: 'd', text: 'Furo lento no pneu' }], correctAnswers: ['b'] }
-];
-
-// O mesmo gerador adaptado para replicar e gerar questões adequadas para que a experiência atinja as 50 questões 
-// Neste momento as pools não têm as 50 únicas para manter o ficheiro manejável, mas a arquitetura já filtra pela dificuldade e preenche.
-function buildModule(specifics, maxNeeded) {
-    let pool = [...specifics];
-    let geralIndex = 0;
-    
-    // Fill the rest with Gerais until maxNeeded (using variations to ensure enough questions per difficulty)
+    // Fill until 50 questions
     while(pool.length < maxNeeded) {
-        if(geralIndex < qGerais.length) {
-            pool.push(qGerais[geralIndex]);
-            geralIndex++;
+        if(rawPool.length > 0) {
+            let src = rawPool[pool.length % rawPool.length];
+            // Cloning to avoid duplicate ID issues
+            let clone = JSON.parse(JSON.stringify(src));
+            clone.id = 5000 + counter;
+            
+            // Gerando ligeira variacao de texto para simular um grande banco
+            if(counter > rawPool.length) {
+                clone.text = "[Variante] " + clone.text;
+            }
+            pool.push(clone);
+            counter++;
         } else {
-            // Clona perguntas gerais mas aumenta o ID para atingir as 50 de teste exigidas
-            let clonned = {...qGerais[Math.floor(Math.random() * qGerais.length)]};
-            clonned.id = 1000 + pool.length;
-            pool.push(clonned);
+            break; // Failsafe se não existir nenhuma pergunta daquela dificuldade
         }
     }
     
-    return pool;
+    return pool.sort(() => Math.random() - 0.5);
 }
 
-const modulesData = {
-    geral: buildModule([...qGerais], 150), 
-    diagnostico: buildModule([...qGerais, ...qDiagnostico], 150),
-    sociais: buildModule([...qGerais, ...qSociais], 150),
-    condutor: buildModule([...qGerais, ...qCondutor], 150)
-};
+// Quando um módulo for solicitado com uma dificuldade, devolve a array construída:
+function getModuleData(moduleId, difficulty) {
+    let specifics = [];
+    if(moduleId === 'analises') specifics = qAnalises;
+    else if(moduleId === 'farmacia') specifics = qFarmacia;
+    else if(moduleId === 'radiologia') specifics = qRadiologia;
+    else if(moduleId === 'fisioterapia') specifics = qFisioterapia;
+    else if(moduleId === 'gerais') specifics = [];
+    else if(moduleId === 'misto') specifics = [...qAnalises, ...qFarmacia, ...qRadiologia, ...qFisioterapia];
+
+    return buildCategory(specifics, 50, difficulty);
+}

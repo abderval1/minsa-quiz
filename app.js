@@ -61,35 +61,15 @@ function goHome() {
     screenResult.classList.remove('active');
     screenHome.classList.add('active');
     backHomeBtn.style.display = 'none';
-    headerDesc.innerText = "Escolha a sua categoria de exame";
+    headerDesc.innerText = "Simulador focado na Terça-Feira";
 }
 
 function startModule(moduleId, moduleName) {
-    let pool = [];
-    
-    if (moduleId === 'misto') {
-        for (let key in modulesData) {
-            pool = pool.concat(modulesData[key]);
-        }
-    } else {
-        pool = modulesData[moduleId] || [];
-    }
-    
-    // Filtra pela dificuldade selecionada
-    activeQuestions = pool.filter(q => q.difficulty === selectedDifficulty);
-    
-    // Se não houver perguntas suficientes dessa dificuldade, pega de outras para não ficar vazio, mas prioriza a dificuldade
-    if (activeQuestions.length < 10) {
-        const otherQuestions = pool.filter(q => q.difficulty !== selectedDifficulty);
-        activeQuestions = activeQuestions.concat(otherQuestions).slice(0, 50);
-    }
-    
-    // Embaralha e corta para o máximo de 50
-    activeQuestions.sort(() => Math.random() - 0.5);
-    activeQuestions = activeQuestions.slice(0, 50);
+    // Busca as 50 perguntas combinando o modulo com a dificuldade
+    activeQuestions = getModuleData(moduleId, selectedDifficulty);
 
     if (activeQuestions.length === 0) {
-        alert("Nenhuma pergunta encontrada para este módulo.");
+        alert("Erro ao carregar módulo.");
         return;
     }
 
@@ -103,7 +83,6 @@ function startModule(moduleId, moduleName) {
     
     backHomeBtn.style.display = 'inline-block';
     
-    // Formata badge e header
     let diffName = selectedDifficulty === 'facil' ? 'Fácil' : (selectedDifficulty === 'normal' ? 'Normal' : 'Difícil');
     headerDesc.innerText = "Módulo: " + moduleName;
     difficultyBadge.innerText = diffName;
@@ -234,7 +213,7 @@ function showResults() {
         resultMessageEl.innerText = "Bom trabalho! Mas continua a estudar para garantir a vaga.";
         resultMessageEl.style.color = "#b45309";
     } else {
-        resultMessageEl.innerText = "Atenção: A tua nota foi baixa. Recomendamos que tentes o nível Fácil primeiro e estudes a matéria.";
+        resultMessageEl.innerText = "Atenção: A tua nota foi baixa. Tenta uma dificuldade menor primeiro.";
         resultMessageEl.style.color = "var(--incorrect-text)";
     }
 }
